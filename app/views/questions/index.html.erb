@@ -1,0 +1,28 @@
+<h1>Perguntas</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Prova</th>
+      <th>Ano</th>
+      <th></th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @questions.each do |question| %>
+      <tr>
+        <td><%= question.exam.name %></td>
+        <td><%= question.exam.year %></td>
+        <td class="actions"><%= link_to 'Mostrar', question %>
+        <%= link_to 'Editar', edit_question_path(question) %>
+        <%= link_to 'Remover', question, method: :delete, data: { confirm: 'Tem certeza?' } %><td/>
+      </tr>
+    <% end %>
+  </tbody>
+</table
+
+<br>
+
+<%= button_to 'Cadastrar Pergunta', new_question_path, :method => 'get', :class => "btn btn-info" %>
