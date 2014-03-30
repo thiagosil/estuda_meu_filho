@@ -14,4 +14,9 @@
  #logo
 {
   font-family: 'Exo 2', sans-serif;
+  text-align: center;
+}
+
+body {
+  background-color: #ffc300
 }
