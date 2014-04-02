@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(params[:question].permit(:question, :exam_id, :subject_id, answers_attributes: [:alternative]))
+    @question = Question.new(params[:question].permit(:question, :exam_id, :subject_id, :picture, answers_attributes: [:alternative, :correct]))
 
     flash[:notice] = 'Pergunta criada com sucesso.' if @question.save
     respond_with(@question)
@@ -21,8 +21,16 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
 
+  def destroy
+    @question = Question.find(params[:id])
+    @question.destroy
+
+    flash[:notice] = "Pergunda removida com sucesso."
+    respond_with(@question)
+  end
+
   private
   def question_params
-    params.permit(:question, :exam_id, :subject_id, answers_attributes: [:alternative])
+    params.permit(:question, :exam_id, :subject_id, :picture, answers_attributes: [:alternative, :correct])
   end
 end

@@ -40,6 +40,11 @@
             <div class="controls">
               <%= answer_fields.text_field :alternative %>
             </div>
+             <div class="control-group">
+            <%= answer_fields.label :correct , :html => { :class => 'control-label'}%>
+            <div class="controls">
+              <%= answer_fields.check_box :correct %>
+            </div>
           </div>
           <% end %>
           <% end %>
