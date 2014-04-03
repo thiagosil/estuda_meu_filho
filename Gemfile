@@ -34,6 +34,7 @@ group :doc do
 end
 
 gem "paperclip", "~> 4.1"
+gem 'devise'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
