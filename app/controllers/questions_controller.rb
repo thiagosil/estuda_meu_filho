@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(params[:question].permit(:question, :exam_id, :subject_id, :picture, answers_attributes: [:alternative, :correct]))
+    @question = Question.new(question_params)
 
     flash[:notice] = 'Pergunta criada com sucesso.' if @question.save
     respond_with(@question)
@@ -31,6 +31,6 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    params.permit(:question, :exam_id, :subject_id, :picture, answers_attributes: [:alternative, :correct])
+    params.require(:question).permit(:question, :picture, :exam_id, :subject_id, :picture, answers_attributes: [:alternative, :correct])
   end
 end
