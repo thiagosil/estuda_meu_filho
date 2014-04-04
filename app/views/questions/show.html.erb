@@ -1,11 +1,22 @@
 <table id="person_attributes" class="table table-bordered">
   <tr>
-    <td><strong><%= t("question") %></td></strong>
     <td><%= @question.question %></td>
   </tr>
 
+<% if @question.picture.exists? %>
   <tr>
     <td><%= image_tag(@question.picture)%></td>
   </tr>
+<% end %>
+  <tr>
+  <td>
+  <ol type="a">
+  
 
+  <% @question.answers.each do |answer| %>
+  <li><%= answer.alternative %></li>
+
+  <% end %>
+  </ol>
+  </td></tr>
 </table>
